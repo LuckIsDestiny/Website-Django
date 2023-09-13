@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>League Details</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <img 
+        src="https://seeklogo.com/images/P/pokemon-go-team-mystic-logo-6E37781AE0-seeklogo.com.png" 
+        alt="Logo of pokemon"
+        id="logo">
+
+        <h1 id="head1">Pokemon League Registration</h1>
+
+        <nav>
+            <a class="nav-link" href="C:\Aashin\FullStack\index.html">Home</a>
+            <a class="nav-link" href="">Login</a>
+            <a class="nav-link" href="">Registration</a>
+        </nav>
+    </header>
+
+    <section id="details">
+        <h2>{{event.event_title}}</h2>
+        <p>Location: {{event.location}}</p>
+        <p>Date: {{event.date}}</p>
+        <p>{{event.description}}</p>
+        <form action="{% url 'eventdetail' event.pk %}" method="POST" class="form1">
+            <h3>Register for Indigo League</h3>
+            {% csrf_token %}
+            {{form.as_p}}
+            
+
+            <input type="submit" value="Register"><br> 
+        </form>
+    </section>
+
+    <footer>
+        <p id="foot">&#169; 2023 Pokemon Showdown. All rights reserved</p>
+    </footer>
+</body>
+</html>
